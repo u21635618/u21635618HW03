@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+
+}
+
+
+
+<h1 style="font-weight:normal">Media Selector</h1>
+<h4 style="font-weight:normal"> Choose Media </h4>
+<div style="background-color:lightcyan;" class="container">
+    <div class="row">
+        <div class="col-sm-12 col-lg-6 col-xl-6 col-md-12">
+            <h3 style="margin-top:25px; "> Description</h3>
+            <p>
+                The Home page has a form where you will need to select whether you want to
+                upload a file, image, or video. You will then be able to select the file on your device which will
+                then be uploaded on submit of the form.
+                The Files page displays a list of all the files that you have uploaded with the
+                functionality to delete and download the file.
+                The Images page displays all the images (which are viewable) that
+                you uploaded, in an orderly way with the functionality to delete and download the images.
+                The Videos page displays all the videos (which are playable) that
+                you uploaded in an orderly way, with the functionality to delete and download the videos.
+                The About Me page has a biography about Inganathi Jacobs and her picture.
+            </p>
+        </div>
+        <div class="col-sm-12 col-lg-6 ">
+            <h3 style="margin-top:15px; ">Option Selection</h3><br />
+
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div>
+                    <label style="font-weight:normal">Document</label><input type="radio" name="Option" value="Documents" /><br />
+                    <label style="font-weight:normal">Image</label><input type="radio" name="Option" value="Images" /><br />
+                    <label style="font-weight:normal">Video</label><input type="radio" name="Option" value="Videos" /><br /><br />
+
+                </div>
+
+                @Html.TextBox("file", "", new { type = "file", name = "file" })
+                <br />
+                <input type="submit" value="Submit"/>
+             
+
+            }
+          
+
+        </div>
+
+
+    </div>
+</div>

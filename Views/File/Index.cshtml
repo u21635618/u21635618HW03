@@ -1,0 +1,46 @@
+﻿@using u21635618HW03.Models
+@model List<FileModel>
+@{
+    ViewBag.Title = "Files";
+}
+
+<h1 style="font-weight:normal">Documents of any file type</h1>
+<h4 style="font-weight:normal"> ----------"Media/Documents/" folder</h4>
+<div class="container" style="background-color:lightcyan;">
+    <div style="height: 400px; overflow: auto;">
+        <div class="well-sm">
+            <table class="table table-condensed "style="margin-top:50px;">
+                <thead style="position:sticky; background-color:black;">
+                    <tr style="color:white;background-color:black" class="auto-style">
+                        <th class="col-lg-6">File Name</th>
+                        <th class="col-lg-4">DOWNLOAD OPTION</th>
+                        <th>&nbsp;</th>
+                        <th class="col-lg-2">DELETE OPTION</th>
+                    </tr>
+                </thead>
+                @foreach (FileModel file in Model)
+                {
+                    <tr>
+
+                        <td>@file.FileName</td>
+                        <td>
+                            <button style=" background-color:green; margin-left:25px;">
+                                @Html.ActionLink("Download", "DownloadFile",
+                                 new { fileName = file.FileName},
+                                  new { @style = "color:white;" })
+                            </button>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>
+                            <button style=" background-color:red;margin-left:25px;">
+                                @Html.ActionLink("DELETE", "DeleteFile",
+                               new { fileName = file.FileName },
+                               new { onclick = "return confirm('Are you sure you wish to delete this?');" })
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
